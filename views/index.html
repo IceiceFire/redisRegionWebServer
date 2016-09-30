@@ -1,0 +1,118 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Region</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="data:image/png;" type="image/x-icon" />
+    <!-- CSS ===================== -->
+    <!-- load bootstrap -->
+    <link rel='stylesheet' href='/static/css/bootstrap.css'>
+    <style>
+        body     { padding-top:30px; }
+    </style>
+    <!-- JS ===================== -->
+    <!-- load angular -->
+    <script src='/static/js/angular.js'></script>
+    <script src='/static/js/app.js'></script>
+
+    <script src='/static/js/ui-bootstrap-tpls.js'></script>
+</head>
+ 
+<!-- apply angular app and controller to our body -->
+<body ng-app="validationApp" ng-controller="mainController">
+
+<!-- modal template -->
+<script type="text/ng-template" id="myModelContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Region</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="item in items">{{item}}</li>
+            <div class="h2">现在提交Region注册信息吗?</b></div>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">
+        确认
+        </button>
+        <button class="btn btn-warning" ng-click="cancel()">退出</button>
+    </div>
+</script>
+
+<div class="container">
+<div class="col-sm-8 col-sm-offset-2">
+     
+    <!-- PAGE HEADER -->
+    <div class="page-header"><h1>Theone-cache微服务:&nbsp;Region申请</h1></div>
+    
+    <!-- FORM -->
+    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> 
+ 
+        <!-- REGION -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.region.$invalid && !userForm.region.$pristine && submitted }">
+            <label>Region</label>
+            <input type="text" name="region" class="form-control" ng-model="region" required>
+            <p ng-show="userForm.region.$invalid " class="help-block">
+                Region is required.<span class="label label-default">平台ID:业务简缩名:子业务简缩名</span>
+            </p>
+        </div>
+
+        <!-- REDIS ADDRESS -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.redisip.$invalid && !userForm.redisip.$pristine && submitted }">
+            <label>Redis Address</label>
+            <input type="text" name="redisip" class="form-control" ng-model="redisip" required>
+            <p ng-show="userForm.redisip.$invalid" class="help-block">
+                Redis Address is required.<span class="label label-default">redis服务器 ip:port</span>
+            </p>
+        </div>
+
+        <!-- KEY PREFIX -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.keyprefix.$invalid && !userForm.keyprefix.$pristine && submitted }">
+            <label>Key Prefix</label>
+            <input type="text" name="keyprefix" class="form-control" ng-model="keyprefix" required>
+            <p ng-show="userForm.keyprefix.$invalid" class="help-block">
+                key prefix is required.
+            </p>
+        </div>
+
+        <!-- EXPIRE TIME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.expire.$invalid && !userForm.expire.$pristine && submitted }">
+            <label>Expire Time</label>
+            <input type="text" name="expire" class="form-control" ng-model="expire" required>
+            <p ng-show="userForm.expire.$invalid" class="help-block">
+                Rxpire Time is required.
+                <span class="label label-default">为key设置生存时间&nbsp;&nbsp;(-1：永久有效)</span>
+            </p>
+        </div>
+         
+        <!-- STARTING STATUS -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.starting.$invalid && !userForm.starting.$pristine && submitted }">
+            <label>Starting Status</label>
+            <input type="text" name="starting" class="form-control" ng-model="starting" required>
+            <p ng-show="userForm.starting.$invalid" class="help-block"> 
+                Starting Status is required.
+                <span class="label label-default">是否启用region&nbsp;&nbsp;(0：启用  1：不启用)</span>
+            </p>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span ng-show="userForm.$invalid" class="label label-warning">
+            ----以上信息必须填写
+        </span>
+    </form>
+
+</div><!-- col-sm-8 -->
+</div><!-- /container -->
+</body>
+    <footer>
+        <div class="modal-footer">
+            Official website:
+            <a href="http://<<<.Website>>>"><<<.Website>>></a> /
+            Contact me:
+            <a class="email" href="mailto:<<<.Email>>>"><<<.Email>>></a>
+        </div>
+    </footer>
+</html>
