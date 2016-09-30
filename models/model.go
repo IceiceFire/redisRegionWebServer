@@ -48,7 +48,9 @@ func (r *redisClient) Setkey(key string, val string) {
 
 //获取key的值 [ string ]
 func (r *redisClient) Getkey(key string) string {
-	client, err := redis.String(r.pool.Get().Do("GET", key))
+	conn := r.pool.Get()
+	defer conn.Close()
+	client, err := redis.String(conn.Do("GET", key))
 	if err != nil {
 		beego.Error(err)
 		panic(err)
