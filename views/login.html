@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+     
+    <!-- CSS ===================== -->
+    <!-- load bootstrap -->
+    <link rel='stylesheet' href='/static/css/bootstrap.css'>
+    <style>
+        body     { padding-top:30px; }
+    </style>
+</head>
+<body>
+    <div class="container" >
+    <br>
+    <div class="col-sm-8 col-sm-offset-2">
+    <form action="/login" method="post" class="col-sm-8 col-sm-offset-2" method="post">
+        <div class="form-group">
+            <label >用户名: </label>
+                <input type="text" class="form-control" name="uname" required>
+        </div>
+        <P></P>
+        <div class="form-group">
+            <label >密码: </label>
+                <input type="text" class="form-control" name="upassword" required>
+        </div>
+       
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">submit</button>
+        </div>
+    </form>
+    </div>
+    </div>
+
+</body>
+</html>
