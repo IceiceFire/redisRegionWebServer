@@ -13,6 +13,6 @@ func (c *MainController) Get() {
 	c.Data["Website"] = "b2c.cmcmall.com.cn"
 	c.Data["Email"] = "majiango@hotmail.com"
 	// c.TplName = "model.html"
-	c.TplName = "index.html"
+	c.TplName = "login.html"
 	beego.Info("Get -------------------------------------end")
 }

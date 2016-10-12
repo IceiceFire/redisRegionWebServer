@@ -31,3 +31,8 @@ func (p *PostController) Post() {
 	p.TplName = "index.html"
 	beego.Info("Post ---------------------------------------------------end")
 }
+
+func (p *PostController) Get() {
+
+	p.TplName = "login.html"
+}
